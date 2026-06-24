@@ -165,91 +165,203 @@ class _LiveStreamingScreenState extends State<LiveStreamingScreen> {
                               }
                             },
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 10.0, right: 10.0,
-                                  bottom: 10.0),
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                color: Color(0xff00327a),
-                                child: Stack(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Container(
-                                            margin: EdgeInsets.all(1.0),
-                                            height: isTablet ? 190 : 140,
-                                            width: screenSize.width,
-                                            child: Image.network(
-                                              fit: BoxFit.fill,
-                                              event.image_url.toString(),
-                                              loadingBuilder:
-                                                  (BuildContext context,
-                                                  Widget child,
-                                                  ImageChunkEvent?
-                                                  loadingProgress) {
-                                                if (loadingProgress ==
-                                                    null) {
-                                                  return child; // Return the child widget if loading is complete
-                                                }
-                                                return const Image(
+                              padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  clipBehavior: Clip.antiAlias,
+                                  color: const Color(0xff00327a),
+                                  child: Stack(
+                                    children: [
+                                      Column(
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius: const BorderRadius.only(
+                                              topLeft: Radius.circular(20),
+                                              topRight: Radius.circular(20),
+                                            ),
+                                            child: SizedBox(
+                                              height: isTablet ? 190 : 140,
+                                              width: screenSize.width,
+                                              child: Image.network(
+                                                event.image_url.toString(),
+                                                fit: BoxFit.fill,
+                                                loadingBuilder: (
+                                                    BuildContext context,
+                                                    Widget child,
+                                                    ImageChunkEvent? loadingProgress,
+                                                    ) {
+                                                  if (loadingProgress == null) {
+                                                    return child;
+                                                  }
+                                                  return Image.asset(
+                                                    "images/placeholder.png",
                                                     fit: BoxFit.fill,
-                                                    image: AssetImage(
-                                                        "images/placeholder.png")); // Return a loading indicator while the image is being loaded
-                                              },
-                                              errorBuilder: (_,
-                                                  Object exception,
-                                                  StackTrace? stackTrace) {
-                                                return Image.asset(
-                                                  "images/placeholder.png",
-                                                  fit: BoxFit.fill,
-                                                );
-                                              },
-                                            )),
-                                        SizedBox(
-                                          width: screenSize.width,
-                                          height: 50.0,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(left: 10.0,right: 10.0),
-                                            child: Text(
-                                              event.name ?? "",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: isTablet ? 18 : 13,
+                                                  );
+                                                },
+                                                errorBuilder: (
+                                                    _,
+                                                    Object exception,
+                                                    StackTrace? stackTrace,
+                                                    ) {
+                                                  return Image.asset(
+                                                    "images/placeholder.png",
+                                                    fit: BoxFit.fill,
+                                                  );
+                                                },
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Obx(()=> Positioned(
-                                      top: 10,
-                                      right: 10,
-                                      child: IconButton(
-                                        onPressed: () {
-                                          _streamingApiController!.finalEventList[index].isFavourite?.toggle();
-                                          if(_streamingApiController!.finalEventList[index].isFavourite==true) {
-                                            saveFavoriteLeague(
-                                                event?.priority ?? 0, event?.priority ?? 0, event?.name ?? "Test Event"
-                                            );
-                                          }else{
-                                            deleteFavoriteLeague(
-                                                event?.priority ?? 0, event?.priority ?? 0, event?.name ?? "Test Event");
-                                          }
-                                        },
-                                        icon: Icon(
-                                          _streamingApiController!.finalEventList[index].isFavourite == true
-                                              ? Icons.favorite
-                                              : Icons.favorite_border,
-                                          color: Colors.white,
-                                          size: 30,
+                                          SizedBox(
+                                            width: screenSize.width,
+                                            height: 50.0,
+                                            child: Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                              child: Text(
+                                                event.name ?? "",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: isTablet ? 18 : 13,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Obx(
+                                            () => Positioned(
+                                          top: 1,
+                                          right: 1,
+                                          child: IconButton(
+                                            onPressed: () {
+                                              _streamingApiController!
+                                                  .finalEventList[index]
+                                                  .isFavourite
+                                                  ?.toggle();
+
+                                              if (_streamingApiController!
+                                                  .finalEventList[index]
+                                                  .isFavourite ==
+                                                  true) {
+                                                saveFavoriteLeague(
+                                                  event?.priority ?? 0,
+                                                  event?.priority ?? 0,
+                                                  event?.name ?? "Test Event",
+                                                );
+                                              } else {
+                                                deleteFavoriteLeague(
+                                                  event?.priority ?? 0,
+                                                  event?.priority ?? 0,
+                                                  event?.name ?? "Test Event",
+                                                );
+                                              }
+                                            },
+                                            icon: Icon(
+                                              _streamingApiController!
+                                                  .finalEventList[index]
+                                                  .isFavourite ==
+                                                  true
+                                                  ? Icons.favorite
+                                                  : Icons.favorite_border,
+                                              color: Colors.white,
+                                              size: 30,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),)
-                                  ],
-                                )
-                              ),
+                                    ],
+                                  ),
+                                ),
+
+
+
+                              // child: Card(
+                              //   shape: RoundedRectangleBorder(
+                              //     borderRadius: BorderRadius.circular(10.0),
+                              //   ),
+                              //   color: Color(0xff00327a),
+                              //   child: Stack(
+                              //     children: [
+                              //       Column(
+                              //         children: [
+                              //           Container(
+                              //               margin: EdgeInsets.all(1.0),
+                              //               height: isTablet ? 190 : 140,
+                              //               width: screenSize.width,
+                              //               child: Image.network(
+                              //                 fit: BoxFit.fill,
+                              //                 event.image_url.toString(),
+                              //                 loadingBuilder:
+                              //                     (BuildContext context,
+                              //                     Widget child,
+                              //                     ImageChunkEvent?
+                              //                     loadingProgress) {
+                              //                   if (loadingProgress ==
+                              //                       null) {
+                              //                     return child; // Return the child widget if loading is complete
+                              //                   }
+                              //                   return const Image(
+                              //                       fit: BoxFit.fill,
+                              //                       image: AssetImage(
+                              //                           "images/placeholder.png")); // Return a loading indicator while the image is being loaded
+                              //                 },
+                              //                 errorBuilder: (_,
+                              //                     Object exception,
+                              //                     StackTrace? stackTrace) {
+                              //                   return Image.asset(
+                              //                     "images/placeholder.png",
+                              //                     fit: BoxFit.fill,
+                              //                   );
+                              //                 },
+                              //               )
+                              //           ),
+                              //           SizedBox(
+                              //             width: screenSize.width,
+                              //             height: 50.0,
+                              //             child: Padding(
+                              //               padding: const EdgeInsets.only(left: 10.0,right: 10.0),
+                              //               child: Text(
+                              //                 event.name ?? "",
+                              //                 style: TextStyle(
+                              //                   color: Colors.white,
+                              //                   fontWeight: FontWeight.bold,
+                              //                   fontSize: isTablet ? 18 : 13,
+                              //                 ),
+                              //               ),
+                              //             ),
+                              //           ),
+                              //         ],
+                              //       ),
+                              //       Obx(()=> Positioned(
+                              //         top: 10,
+                              //         right: 10,
+                              //         child: IconButton(
+                              //           onPressed: () {
+                              //             _streamingApiController!.finalEventList[index].isFavourite?.toggle();
+                              //             if(_streamingApiController!.finalEventList[index].isFavourite==true) {
+                              //               saveFavoriteLeague(
+                              //                   event?.priority ?? 0, event?.priority ?? 0, event?.name ?? "Test Event"
+                              //               );
+                              //             }else{
+                              //               deleteFavoriteLeague(
+                              //                   event?.priority ?? 0, event?.priority ?? 0, event?.name ?? "Test Event");
+                              //             }
+                              //           },
+                              //           icon: Icon(
+                              //             _streamingApiController!.finalEventList[index].isFavourite == true
+                              //                 ? Icons.favorite
+                              //                 : Icons.favorite_border,
+                              //             color: Colors.white,
+                              //             size: 30,
+                              //           ),
+                              //         ),
+                              //       ),)
+                              //     ],
+                              //   )
+                              // ),
                             ),
                           );
                         },

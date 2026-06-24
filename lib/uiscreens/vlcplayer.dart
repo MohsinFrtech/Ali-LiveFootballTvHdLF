@@ -1779,12 +1779,18 @@ class _PlayerScreenState extends State<VlcPlayerClass>
 
   Future<void> disposePlayerAndResources() async {
     try {
-      if (_pulseController != null) {
-        _pulseController?.stop();
-        _pulseController!.dispose();
-        _pulseController =
-            null; // This prevents a second call from doing anything
+
+      if (_channel != null) {
+        await _channel?.invokeMethod('pause');   // Stop the sound immediately
+        await _channel?.invokeMethod('release'); // Completely destroy the player instance
       }
+
+      // if (_pulseController != null) {
+      //   _pulseController?.stop();
+      //   _pulseController!.dispose();
+      //   _pulseController =
+      //       null; // This prevents a second call from doing anything
+      // }
     } catch (e) {
       debugPrint("Exception $e");
     }
@@ -1855,6 +1861,12 @@ class _PlayerScreenState extends State<VlcPlayerClass>
     try {
       WidgetsBinding.instance.removeObserver(this);
       disposePlayerAndResources();
+      if (_pulseController != null) {
+        _pulseController?.stop();
+        _pulseController!.dispose();
+        _pulseController =
+        null; // This prevents a second call from doing anything
+      }
     } catch (e) {
       debugPrint("Exception $e");
     }

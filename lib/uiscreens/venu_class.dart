@@ -35,6 +35,7 @@ class _VenueMainState extends State<VenueMainClass> {
 
   @override
   Widget build(BuildContext context) {
+    bool isTablet = MediaQuery.of(context).size.width > 600;
     return Scaffold(
       backgroundColor: Color(0xff0b3bbf),
       body: Stack(
@@ -60,16 +61,44 @@ class _VenueMainState extends State<VenueMainClass> {
                           child: Row(
                             children: [
                               Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Get.back();
-                                    },
-                                    child: SvgPicture.asset(
-                                      "images/back.svg",
-                                      colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                                padding: const EdgeInsets.only(left: 10),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.back();
+                                  },
+                                  child: Container(
+                                    height: isTablet ? 50 : 40,
+                                    width: isTablet ? 50 : 40,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.circle,
                                     ),
-                                  ))
+                                    child: Center(
+                                      child: SvgPicture.asset(
+                                        "images/back.svg",
+                                        height: isTablet ? 20 : 16,
+                                        width: isTablet ? 20 : 16,
+                                        colorFilter: const ColorFilter.mode(
+                                          Colors.white,
+                                          BlendMode.srcIn,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              // Padding(
+                              //     padding: const EdgeInsets.only(left: 10),
+                              //     child: GestureDetector(
+                              //       onTap: () {
+                              //         Get.back();
+                              //       },
+                              //       child: SvgPicture.asset(
+                              //         "images/back.svg",
+                              //         colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                              //       ),
+                              //     )
+                              // )
                             ],
                           ),
                         ),

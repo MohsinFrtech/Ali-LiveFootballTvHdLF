@@ -34,6 +34,7 @@ class _TeamMatchesListState extends State<TeamMatchesList> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+    bool isTablet = MediaQuery.of(context).size.width > 600;
 
     return Scaffold(
       backgroundColor: Color(0xff0b3bbf),
@@ -54,16 +55,44 @@ class _TeamMatchesListState extends State<TeamMatchesList> {
                   child: Row(
                     children: [
                       Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.back();
-                            },
-                            child: SvgPicture.asset(
-                              "images/back.svg",
-                              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                        padding: const EdgeInsets.only(left: 10),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Container(
+                            height: isTablet ? 50 : 40,
+                            width: isTablet ? 50 : 40,
+                            decoration: const BoxDecoration(
+                              color: Colors.black,
+                              shape: BoxShape.circle,
                             ),
-                          )),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                "images/back.svg",
+                                height: isTablet ? 20 : 16,
+                                width: isTablet ? 20 : 16,
+                                colorFilter: const ColorFilter.mode(
+                                  Colors.white,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Padding(
+                      //     padding: const EdgeInsets.only(left: 10),
+                      //     child: GestureDetector(
+                      //       onTap: () {
+                      //         Get.back();
+                      //       },
+                      //       child: SvgPicture.asset(
+                      //         "images/back.svg",
+                      //         colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                      //       ),
+                      //     )
+                      // ),
                       Expanded(child: Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
