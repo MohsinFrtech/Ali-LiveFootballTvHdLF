@@ -65,17 +65,45 @@ class _FavouriteEventsState extends State<FavouriteEvents> {
                           flex: 1,
                           child: Row(
                             children: [
+                              // Padding(
+                              //     padding: const EdgeInsets.only(left: 10),
+                              //     child: GestureDetector(
+                              //       onTap: () {
+                              //         Get.back();
+                              //       },
+                              //       child: SvgPicture.asset(
+                              //         "images/back.svg",
+                              //         color: Colors.white,
+                              //       ),
+                              //     )
+                              // ),
                               Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Get.back();
-                                    },
-                                    child: SvgPicture.asset(
-                                      "images/back.svg",
-                                      color: Colors.white,
+                                padding: const EdgeInsets.only(left: 10),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.back();
+                                  },
+                                  child: Container(
+                                    height: isTablet ? 50 : 40,
+                                    width: isTablet ? 50 : 40,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.circle,
                                     ),
-                                  )),
+                                    child: Center(
+                                      child: SvgPicture.asset(
+                                        "images/back.svg",
+                                        height: isTablet ? 20 : 16,
+                                        width: isTablet ? 20 : 16,
+                                        colorFilter: const ColorFilter.mode(
+                                          Colors.white,
+                                          BlendMode.srcIn,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           )),
                       Padding(
