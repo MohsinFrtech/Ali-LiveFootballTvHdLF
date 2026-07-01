@@ -184,10 +184,17 @@ class _SecondPageState extends State<SecondPage> {
                             child: Column(
                               children: [
                                 Container(
+                                  // decoration: BoxDecoration(
+                                  //   color: const Color(0xff00327a),
+                                  //   // Set the border radius on the container
+                                  //   borderRadius: BorderRadius.circular(10.0),
+                                  // ),
                                   decoration: BoxDecoration(
                                     color: const Color(0xff00327a),
-                                    // Set the border radius on the container
-                                    borderRadius: BorderRadius.circular(10.0),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10.0),
+                                      topRight: Radius.circular(10.0),
+                                    ),
                                   ),
                                   width: screenSize.width,
                                   child: Row(
