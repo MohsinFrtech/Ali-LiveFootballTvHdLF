@@ -11,7 +11,7 @@ class StreamingApiData {
 
   static const String ipApiUrl = "https://ip-api.streamingucms.com/";
 
-  static  String streamApiBaseUrl="https://test.nospacedidlove.com/api/applications/details"; //cms url
-  static  String streamApiToken="9dcd9910ea4534da1ce77d449cecaee5fac3750b"; //token
-  static  String streamAppId="34"; //app id
+  static  String streamApiBaseUrl="https://score-streaming.nospacedidlove.com/api/applications/details"; //cms url
+  static  String streamApiToken="dddb71dfd3c4993863a260855153dba1ed10fb68"; //token
+  static  String streamAppId="409"; //app id
 }

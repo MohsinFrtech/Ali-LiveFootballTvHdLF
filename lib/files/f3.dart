@@ -1,16 +1,15 @@
 class F3 {
   static List<String> getStringArray3() {
-    String j5i = "idA452Ti@jIV6PJC%gX8@FDaP6q62hM%lE@QvHn8";
-    String gnx = "DokDrvXadetZAQng4TDYSX%1qa6d7tpE%l8fyKGd";
-    String j4i = "MHtF%TDZ0NIohZ7BS0yq!yM%PSIATD3iUdyh4RpD";
-    String v =
-        "z#F\$@ReQOUqUKL\$rjb6SNMe6DqikSxtA4nWXW0Q5";
-    String st3 = "JqMpCMs7bh64lHMyRpQIuk1ZzUznONlUh5BcF%!o";
-    String yfi = "roGFPM6T!F4k@4pZWM9GyybHrnpjFMD\$D9@HF1tt";
-    String meu = "0!Io2IX4nfBbp8c0AwkW3kCs2T2pFpw9CH!LH%06";
-    String iyq = "DNcWrVd9kxLP!7T!1q51CEj3eJBMva3Ah55FLX\$6";
-    String crd = "E5yFZc3R#Ju37xGJJaC8jCWKEb5vPFt35q5wcM2S";
-    String w = "nZ5tW!gLlXaHIo0!1NY3oYK9cFV2ZCgD!ey7IlE0";
+    String j5i = "Y%/\$uB[DAKHP1ez6YK[;aZ=jv%.}2w38=rG#9/Mg";
+    String gnx = "-TF)U!7]dd!LE9UXvEUnf[xp#x2Zi/Dm@&Z.b{gr";
+    String j4i = "%L%DNqL,v)H%@#u+%L=h7KP&YiWbjt-3F{h@\$+6/";
+    String v = "pCJNr/yd*%{*[MCFDAKmAF/XP>2Vmjj&c\$)#d%nA";
+    String st3 = "aq@TG:?rhn%t:7}3qYTxQ!3@&5P.mXSUGVP*gK?!";
+    String yfi = "pn4xt2zmcr:zd@hf(lh.xvsvl2+ZzAiQQ]/9md[+";
+    String meu = ")gLc5;(:{%MLwU.;/0uSDq#7?-X@!]B&i)/2,+1m";
+    String iyq = "cX=[S/;Eg2;tLK=m}YC84;vQvQq?T\$c_yE4_buQT";
+    String crd = "dJu}?k1e99:2*HzXt+4;5JbW()Z)Br?E{Z@hvS%[";
+    String w = "w+]pMP)1i?:R7pf\$wSkG{V@K6iz\$Lk&k1k9U[m:n";
 
     return [
       j5i,
